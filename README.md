@@ -16,7 +16,7 @@ Aplicação front-end inspirada no site público da Lions Seminovos, desenvolvid
 
 ## Como o desafio foi resolvido
 
-A interface mantém uma estética limpa, com tons neutros, tipografia editorial e detalhes em dourado. A navegação entre início, catálogo, detalhes do veículo e agendamento é feita no próprio aplicativo, sem adicionar uma dependência de roteamento para este escopo.
+A interface mantém uma estética limpa, com tons neutros, tipografia editorial e detalhes em dourado. A navegação usa React Router, com URLs próprias para início, catálogo, detalhes do veículo e agendamento, permitindo abrir e compartilhar cada área diretamente.
 
 ### Página inicial
 
@@ -41,7 +41,7 @@ A interface mantém uma estética limpa, com tons neutros, tipografia editorial 
 
 ### Responsividade e acessibilidade
 
-- O layout reorganiza navegação, filtros, cartões e formulários em larguras menores.
+- O layout reorganiza navegação, filtros, cartões e formulários em larguras menores. No celular, o botão de menu abre os links para início, catálogo e agendamento.
 - Controles nativos de formulário, estados selecionados, rótulos acessíveis e textos alternativos ajudam a tornar o fluxo utilizável por teclado e tecnologias assistivas.
 
 ## Tecnologias
@@ -58,28 +58,53 @@ A interface mantém uma estética limpa, com tons neutros, tipografia editorial 
 
 ```text
 src/
+  app/
+    App.tsx                  # fornece o router à aplicação
+    AppLayout.tsx            # cabeçalho, rodapé e layout de rotas
+    routes.tsx               # rotas de início, catálogo, veículo e agendamento
+    lazy-routes.tsx          # carregamento sob demanda e fallback das páginas
+    pages.tsx                # adaptadores entre rotas e funcionalidades
+    main.tsx                 # inicialização do React
+    index.css                # estilos globais
+    styles.css               # estilos da aplicação e responsividade
+    testSetup.ts             # configuração dos testes
+    __tests__/
+      app.test.tsx           # testes de integração da aplicação
   features/
+    home/
+      home-page.tsx          # apresentação e destaques
     appointments/
-      appointmentService.ts  # simulação da solicitação de visita
+      components/
+        appointment-page.tsx # formulário e confirmação demonstrativa
+      services/
+        appointment-service.ts # simulação da solicitação de visita
       types.ts               # contrato dos dados do formulário
     vehicles/
-      types.ts               # tipos de veículos e repositório
-      vehicleMock.ts         # anúncios e dados demonstrativos
-      vehicleRepository.ts   # repositório assíncrono em memória
-      vehicleService.ts      # ponto de acesso ao catálogo
-      useVehicles.ts         # carregamento e estados do catálogo
-  App.tsx                    # páginas, navegação e componentes da interface
-  App.css                    # estilos e responsividade
-  index.css                  # estilos globais
-  App.test.tsx               # testes de experiência e interações
-  testSetup.ts               # configuração compartilhada dos testes
+      components/
+        catalog-page.tsx     # filtros e resultados do catálogo
+        vehicle-detail.tsx   # galeria e ficha do veículo
+      hooks/
+        use-vehicles.ts      # carregamento e estados do catálogo
+      services/
+        vehicle-service.ts   # ponto de acesso ao catálogo
+        vehicle-repository.ts # repositório assíncrono em memória
+      mocks/
+        vehicle.mock.ts      # anúncios e dados demonstrativos
+      types.ts               # contratos de veículo e repositório
+  shared/
+    components/
+      vehicle-card.tsx       # cartão usado na Home e no catálogo
+    utils/
+      format-currency.ts     # formatação monetária brasileira
   assets/
     vw-virtus.jpg            # imagem usada no banner inicial
     lions-logo.png           # logo da navegação e do rodapé
 public/                      # arquivos estáticos servidos diretamente
 ```
 
-O catálogo é carregado por `useVehicles`, que chama `vehicleService`. O serviço delega a leitura ao `mockVehicleRepository`, implementado em memória com uma pequena espera assíncrona para representar os estados de carregamento, sucesso e erro. Os tipos em `features/vehicles/types.ts` definem o contrato para substituir esse repositório por uma API quando houver um backend.
+As rotas ficam em `app/routes.tsx` e usam React Router. URLs dedicadas permitem abrir e compartilhar diretamente o catálogo, os detalhes de um veículo e o agendamento. `AppLayout` reúne a navegação global e compartilha o estado carregado do catálogo com as páginas. A interface e os serviços de negócio ficam em suas próprias features. `shared` contém apenas o cartão reutilizado em duas áreas e o formatador de moeda. O TypeScript usa a opção `strict` para habilitar verificações mais rigorosas.
+
+O catálogo é carregado por `use-vehicles`, que chama `vehicle-service`. O serviço delega a leitura ao `vehicle-repository`, implementado em memória com uma pequena espera assíncrona para representar os estados de carregamento, sucesso e erro. Os tipos em `features/vehicles/types.ts` definem o contrato para substituir esse repositório por uma API quando houver um backend. Os anúncios de demonstração ficam nos mocks locais da feature de veículos; não há camada de MSW porque o projeto não faz requisições de rede.
 
 O formulário usa `requestAppointment` como operação simulada. Ele valida e retorna um protocolo de demonstração sem persistir os dados ou contatar a loja.
 
@@ -111,7 +136,7 @@ npm run preview   # serve localmente o build já gerado
 
 ## Decisões e limitações
 
-- O projeto prioriza as três áreas pedidas e mantém a navegação local para reduzir complexidade desnecessária.
+- O projeto prioriza as três áreas pedidas e usa rotas do lado do cliente, sem backend ou persistência.
 - Os dados ficam em mocks tipados; não há API, banco de dados, autenticação ou integração com CRM.
 - Os veículos observados no catálogo público foram registrados como referência em 28/10/2026. Disponibilidade e preços podem mudar e devem ser confirmados diretamente com a loja.
 - Algumas motos foram incluídas apenas para demonstrar como o catálogo pode comportar novas categorias e atributos. Elas não são anúncios reais.

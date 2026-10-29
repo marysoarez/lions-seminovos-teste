@@ -1,5 +1,5 @@
-import { vehicles } from './vehicleMock'
-import type { VehicleRepository } from './types'
+import { vehicles } from '../mocks/vehicle.mock'
+import type { VehicleRepository } from '../types'
 
 export const mockVehicleRepository: VehicleRepository = {
   async list() {

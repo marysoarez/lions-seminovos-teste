@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { vehicleService } from './vehicleService'
-import type { Vehicle } from './types'
+import { vehicleService } from '../services/vehicle-service'
+import type { Vehicle } from '../types'
 
 export function useVehicles() {
   const [vehicles, setVehicles] = useState<Vehicle[]>([])

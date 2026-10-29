@@ -1,4 +1,4 @@
-import type { Vehicle } from './types'
+import type { Vehicle } from '../types'
 
 const photosByModel: Record<string, string[]> = {
   'logan-life': ['https://img.olx.com.br/images/20/209521659554547.webp', 'https://images.usadosbr.com/manipulatedImages/media/gallery/a2/9f/2d/renault-logan-1-0-12v-sce-zen-1-2023-rio-de-janeiro-rj-9956d041-bg--4-image-760x570-crop.webp'],

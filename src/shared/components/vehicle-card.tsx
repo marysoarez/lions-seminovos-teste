@@ -1,0 +1,6 @@
+import type { Vehicle } from '../../features/vehicles/types'
+import { formatCurrency } from '../utils/format-currency'
+
+export function VehicleCard({ vehicle, onClick }: { vehicle: Vehicle; onClick: () => void }) {
+  return <article className="vehicle-card"><button className="card-image" onClick={onClick} aria-label={`Ver detalhes de ${vehicle.brand} ${vehicle.model}`}><img src={vehicle.image} alt={`${vehicle.brand} ${vehicle.model}`} loading="lazy"/>{vehicle.demoOnly ? <span className="badge">MOTO DEMONSTRATIVA</span> : vehicle.featured && <span className="badge">SELEÇÃO LIONS</span>}<span className="card-arrow">↗</span></button><div className="card-info"><div className="vehicle-title"><div><span className="make">{vehicle.brand}</span><h3>{vehicle.model}</h3></div><strong>{formatCurrency(vehicle.price)}</strong></div><div className="vehicle-meta"><span>{vehicle.year}</span><span>{vehicle.mileage.toLocaleString('pt-BR')} km</span><span>{vehicle.vehicleType === 'Moto' ? vehicle.motorcycleCategory : vehicle.category}</span></div>{vehicle.demoOnly && <p className="demo-card-note">Preço e quilometragem ilustrativos</p>}<button className="card-details" onClick={onClick}>Ver detalhes <span>↗</span></button></div></article>
+}

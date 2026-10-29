@@ -1,4 +1,4 @@
-import type { AppointmentInput, AppointmentResult } from './types'
+import type { AppointmentInput, AppointmentResult } from '../types'
 
 /** Demonstra envio assíncrono; não armazena os dados nem cria uma reserva real. */
 export async function requestAppointment(_input: AppointmentInput): Promise<AppointmentResult> {
