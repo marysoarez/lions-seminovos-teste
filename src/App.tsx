@@ -3,6 +3,7 @@ import { useVehicles } from './features/vehicles/useVehicles'
 import { requestAppointment } from './features/appointments/appointmentService'
 import type { AppointmentInput } from './features/appointments/types'
 import type { Vehicle } from './features/vehicles/types'
+import lionsLogo from './assets/lions-logo.png'
 import './App.css'
 
 type Page = 'home' | 'vehicles' | 'detail' | 'appointment'
@@ -47,7 +48,7 @@ function App() {
 
   return <div className="site-shell">
     <div className="topline"><div className="container topline-inner"><span>Revenda de automóveis seminovos com mais de 10 anos no ramo.</span><span>Rio de Janeiro · RJ&nbsp;&nbsp; | &nbsp;&nbsp;Seg–Sáb, 9h às 18h</span></div></div>
-    <header className="header"><div className="container nav"><button className="brand" onClick={() => go('home')} aria-label="Lions Seminovos, página inicial"><img src="/lions-logo.png" alt="Lions Seminovos" /></button><nav aria-label="Navegação principal"><button className={page === 'home' ? 'active' : ''} onClick={() => go('home')}>Início</button><button className={page === 'vehicles' ? 'active' : ''} onClick={() => go('vehicles')}>Catálogo</button><button onClick={() => go('appointment')}>A loja</button></nav><button className="button button-dark nav-cta" onClick={() => go('appointment')}>Agendar visita <span>↗</span></button><button className="mobile-menu" onClick={() => go(page === 'vehicles' ? 'home' : 'vehicles')}>☰</button></div></header>
+    <header className="header"><div className="container nav"><button className="brand" onClick={() => go('home')} aria-label="Lions Seminovos, página inicial"><img src={lionsLogo} alt="Lions Seminovos" /></button><nav aria-label="Navegação principal"><button className={page === 'home' ? 'active' : ''} onClick={() => go('home')}>Início</button><button className={page === 'vehicles' ? 'active' : ''} onClick={() => go('vehicles')}>Catálogo</button><button onClick={() => go('appointment')}>A loja</button></nav><button className="button button-dark nav-cta" onClick={() => go('appointment')}>Agendar visita <span>↗</span></button><button className="mobile-menu" onClick={() => go(page === 'vehicles' ? 'home' : 'vehicles')}>☰</button></div></header>
     <main>
       {page === 'home' && <>
         <section className="hero"><div className="hero-image"/><div className="container hero-content"><div className="eyebrow light"><i/> SEMINOVOS · RIO DE JANEIRO</div><h1>Seu próximo veículo<br/>está mais perto.</h1><p>Carros e motos seminovos para diferentes trajetos<br className="desktop"/> e orçamentos. Confira os anúncios disponíveis.</p><div className="hero-actions"><button className="button button-light" onClick={() => go('vehicles')}>Explorar catálogo <span>↗</span></button><button className="text-link light-link" onClick={() => go('appointment')}>Agendar visita <span>→</span></button></div></div><div className="hero-caption">LIONS SEMINOVOS · RIO DE JANEIRO</div></section>
@@ -64,7 +65,7 @@ function App() {
       {page === 'detail' && selectedVehicle && <VehicleDetail vehicle={selectedVehicle} onBack={() => go('vehicles')} onAppointment={() => go('appointment')} />}
       {page === 'appointment' && <AppointmentPage initialVehicle={selectedVehicle?.model ?? ''} onSubmit={async input => requestAppointment(input)} />}
     </main>
-    <footer className="footer"><div className="container footer-main"><div><img className="footer-logo" src="/lions-logo.png" alt="Lions Seminovos"/><p>Revenda de automóveis seminovos no Rio de Janeiro.<br/>Há mais de 10 anos no ramo.</p></div><div><div className="footer-label">VISITE-NOS</div><p>Av. Brasil, 20384<br/>Coelho Neto / Barros Filho, Rio de Janeiro - RJ<br/>CEP 21515-000</p></div><div><div className="footer-label">FALE COM A LIONS</div><p>(21) 96450-8240<br/>Seg–Sáb, 9h às 18h</p></div><button className="text-link light-link" onClick={() => go('vehicles')}>Explorar catálogo <span>↗</span></button></div><div className="container footer-bottom"><span>© 2025 LIONS SEMINOVOS</span><span>QUALIDADE EM CADA DETALHE.</span></div></footer>
+    <footer className="footer"><div className="container footer-main"><div><img className="footer-logo" src={lionsLogo} alt="Lions Seminovos"/><p>Revenda de automóveis seminovos no Rio de Janeiro.<br/>Há mais de 10 anos no ramo.</p></div><div><div className="footer-label">VISITE-NOS</div><p>Av. Brasil, 20384<br/>Coelho Neto / Barros Filho, Rio de Janeiro - RJ<br/>CEP 21515-000</p></div><div><div className="footer-label">FALE COM A LIONS</div><p>(21) 96450-8240<br/>Seg–Sáb, 9h às 18h</p></div><button className="text-link light-link" onClick={() => go('vehicles')}>Explorar catálogo <span>↗</span></button></div><div className="container footer-bottom"><span>© 2025 LIONS SEMINOVOS</span><span>QUALIDADE EM CADA DETALHE.</span></div></footer>
   </div>
 }
 

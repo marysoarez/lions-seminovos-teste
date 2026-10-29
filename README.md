@@ -21,7 +21,7 @@ A interface mantém uma estética limpa, com tons neutros, tipografia editorial 
 ### Página inicial
 
 - Apresenta a revenda, sua atuação no Rio de Janeiro e chamadas para explorar o catálogo ou agendar uma visita.
-- Usa a imagem `vw-virtus.jpg` como banner e a logo Lions disponibilizada junto ao projeto.
+- Usa a imagem `vw-virtus.jpg` como banner e a logo Lions armazenada em `src/assets/`.
 - Exibe veículos em destaque para levar o visitante diretamente aos detalhes.
 
 ### Catálogo e detalhes
@@ -73,8 +73,10 @@ src/
   index.css                  # estilos globais
   App.test.tsx               # testes de experiência e interações
   testSetup.ts               # configuração compartilhada dos testes
-public/                      # logo e arquivos estáticos
-assets/vw-virtus.jpg          # imagem usada no banner inicial
+  assets/
+    vw-virtus.jpg            # imagem usada no banner inicial
+    lions-logo.png           # logo da navegação e do rodapé
+public/                      # arquivos estáticos servidos diretamente
 ```
 
 O catálogo é carregado por `useVehicles`, que chama `vehicleService`. O serviço delega a leitura ao `mockVehicleRepository`, implementado em memória com uma pequena espera assíncrona para representar os estados de carregamento, sucesso e erro. Os tipos em `features/vehicles/types.ts` definem o contrato para substituir esse repositório por uma API quando houver um backend.
@@ -125,5 +127,7 @@ npm run preview   # serve localmente o build já gerado
 ---
 
 Desenvolvido por **Maryangela Soares** para o desafio técnico de front-end da Lions Seminovos.
+
+
 
 
