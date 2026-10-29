@@ -1,9 +1,24 @@
 import type { Vehicle } from '../types'
+import loganReference from '../../../assets/logan-reference.webp'
+import onixReference from '../../../assets/onix-reference.jpg'
+import bmwG310Gs from '../../../assets/motos/bmw-g310gs.jpg'
+import fazerFz25 from '../../../assets/motos/yamaha-fazer-fz25.webp'
+import cg160Titan from '../../../assets/motos/honda-cg160-titan.webp'
+import hunter350 from '../../../assets/motos/royal-enfield-hunter-350.webp'
+import xre300 from '../../../assets/motos/honda-xre300.jpg'
+import nmax160 from '../../../assets/motos/yamaha-nmax-160.webp'
+import biz125 from '../../../assets/motos/honda-biz125.webp'
+import lander250 from '../../../assets/motos/yamaha-landert250.webp'
+import z400 from '../../../assets/motos/kawasaki-z400.jpg'
+import classic350 from '../../../assets/motos/royal-enfield-classic350.png'
+import cbr500r from '../../../assets/motos/honda-cbr500r.jpg'
+import burgman125 from '../../../assets/motos/suzuki-burgman125.jpg'
+import factor150 from '../../../assets/motos/yamaha-factor150.webp'
 
 const photosByModel: Record<string, string[]> = {
-  'logan-life': ['https://img.olx.com.br/images/20/209521659554547.webp', 'https://images.usadosbr.com/manipulatedImages/media/gallery/a2/9f/2d/renault-logan-1-0-12v-sce-zen-1-2023-rio-de-janeiro-rj-9956d041-bg--4-image-760x570-crop.webp'],
+  'logan-life': [loganReference, loganReference],
   'gol-mpi': ['https://image.webmotors.com.br/_fotos/anunciousados/gigante/2026/202601/20260102/volkswagen-gol-1.0-12v-mpi-totalflex-4p-manual-wmimagem10360097731.jpg', 'https://raposoautoshopping.com.br/admin/storage/uploads/1765215001_395970.jpg'],
-  'onix-lt2': ['https://img.olx.com.br/images/86/866578560536602.jpg', 'https://giacomelliveiculos.com.br/carros/1572dcc1bb460436fb33ba3b77157af5-thumbjpeg-chevrolet-onix-13700241-1000-750-70.jpg'],
+  'onix-lt2': [onixReference, onixReference],
   'kwid-zen': ['https://www.chavesnamao.com.br/imn/0850x0450/A/60/veiculos/130653/8392067/renault-kwid-em-foz-do-iguacu-pr-e0d828a8.jpg', 'https://dsae.s3.amazonaws.com/00434116002697/Fotos/STJ-2D98_03.jpg?u=20260127172029'],
   '208-like': ['https://www.autocerto.com/fotos/3484/2583975/3.jpg?u=20250212150157', 'https://s3.ecompletocarros.dev/images/lojas/125/veiculos/226910/veiculoInfoVeiculoImagesMobile/vehicle_image_1738868614_d41d8cd98f00b204e9800998ecf8427e.jpeg'],
   'spin-ls': ['https://www.autocerto.com/fotos/7094/4725121/1.jpg'],
@@ -12,19 +27,19 @@ const photosByModel: Record<string, string[]> = {
   'onix-plus': ['https://catarina-prd.s3.sa-east-1.amazonaws.com/0deb52979e9c7108940ddb192ab7f29f.jpeg', 'https://next-files-bucket.s3.us-east-1.amazonaws.com/template/34/site/328/modules/sub_modules/720/new/a68835e49c5f953ef8991761681183.png'],
   't-cross-tsi': ['https://catarina-prd.s3.sa-east-1.amazonaws.com/f5a6f54e2d570a31dfc30a0417a61b7f.jpg', 'https://www.autossegredos.com.br/wp-content/uploads/2024/11/Novo-Volkswagen-T-Cross-Sense-200-TSI-2025-cor-Preto-Ninja-5.webp'],
   'cronos-drive': ['https://img2.icarros.com/dbimg/galeriaimgmodelo/0/148582_1.jpg', 'https://www.opovo.com.br/_midias/jpg/2025/04/23/cronos_drive_13at17__1_-34162693.jpg'],
-  'bmw-g310gs': ['https://img.olx.com.br/images/38/383625720955137.jpg', 'https://static1.cafeland.vn/cafeauto/hinh-anh/2022/11/04/169/BMW-G310GS-2023-9.jpg'],
-  'yamaha-fazer-fz25': ['https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=85'],
-  'honda-cg160-titan': ['https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=85'],
-  'royal-enfield-hunter-350': ['https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=85'],
-  'honda-xre300': ['https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=85'],
-  'yamaha-nmax-160': ['https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=85'],
-  'honda-biz125': ['https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=85'],
-  'yamaha-landert250': ['https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=85'],
-  'kawasaki-z400': ['https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=85'],
-  'royal-enfield-classic350': ['https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=85'],
-  'honda-cbr500r': ['https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=85'],
-  'suzuki-burgman125': ['https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=85'],
-  'yamaha-factor150': ['https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=85'],
+  'bmw-g310gs': [bmwG310Gs],
+  'yamaha-fazer-fz25': [fazerFz25],
+  'honda-cg160-titan': [cg160Titan],
+  'royal-enfield-hunter-350': [hunter350],
+  'honda-xre300': [xre300],
+  'yamaha-nmax-160': [nmax160],
+  'honda-biz125': [biz125],
+  'yamaha-landert250': [lander250],
+  'kawasaki-z400': [z400],
+  'royal-enfield-classic350': [classic350],
+  'honda-cbr500r': [cbr500r],
+  'suzuki-burgman125': [burgman125],
+  'yamaha-factor150': [factor150],
 }
 
 const technicalDescriptions: Record<string, string> = {

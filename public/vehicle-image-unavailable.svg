@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Imagem do veículo indisponível">
+  <rect width="1200" height="750" fill="#e8e9e5"/>
+  <g fill="none" stroke="#a9aca4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M320 465h560l-48-135c-12-34-38-56-75-62l-70-12H470c-37 0-65 18-83 52l-67 123Z"/>
+    <path d="m404 365 38-66c7-12 17-18 32-18h205l72 12c17 3 27 11 33 28l17 44"/>
+    <circle cx="440" cy="476" r="47" fill="#e8e9e5"/><circle cx="760" cy="476" r="47" fill="#e8e9e5"/>
+    <path d="M526 364h130"/>
+  </g>
+  <text x="600" y="590" text-anchor="middle" fill="#74786f" font-family="Arial,sans-serif" font-size="27" letter-spacing="3">IMAGEM INDISPONÍVEL</text>
+</svg>
